@@ -916,10 +916,17 @@ textarea::placeholder {
 
     .chat-box {
         padding: 16px;
+        padding-bottom: 100px;
     }
 
     .input-container {
-        padding: 12px 16px 16px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 20px 16px 24px;
+        background: linear-gradient(to top, var(--bg-primary) 60%, transparent);
+        z-index: 100;
     }
 
     .input-wrapper {
@@ -1001,3 +1008,4 @@ textarea::placeholder {
         visibility:hidden;
     }
 }
+
