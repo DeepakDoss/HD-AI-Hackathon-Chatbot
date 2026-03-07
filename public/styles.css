@@ -870,6 +870,14 @@ textarea::placeholder {
     .mobile-only {
         display: flex;
     }
+    
+    html, body {
+        overflow: hidden;
+        height: 100%;
+        position: fixed;
+        width: 100%;
+    }
+
 
     .app-container {
         width: 100%;
@@ -877,6 +885,7 @@ textarea::placeholder {
         border-radius: 0;
         flex-direction: column;
         overflow: hidden;
+        position: relative;
     }
 
     .sidebar {
@@ -933,9 +942,10 @@ textarea::placeholder {
 
     .chat-box {
         padding: 16px;
-        padding-bottom: 110px; /* Space for fixed input container */
+        padding-bottom: 120px;
         flex: 1;
         overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
     }
 
     .input-container {
@@ -944,13 +954,16 @@ textarea::placeholder {
         left: 0;
         right: 0;
         padding: 10px 16px 30px;
-        background: linear-gradient(180deg, transparent 0%, var(--bg-primary) 40%);
+        background: linear-gradient(180deg, transparent 0%, var(--bg-primary) 30%);
         z-index: 1000;
+        pointer-events: none;
     }
 
     .input-wrapper {
+        pointer-events: auto;
         border-radius: 20px;
         padding: 4px 12px;
+        background-color: var(--bg-sidebar);
     }
 
     .scroll-bottom-btn {
@@ -1036,6 +1049,7 @@ textarea::placeholder {
         visibility:hidden;
     }
 }
+
 
 
 
