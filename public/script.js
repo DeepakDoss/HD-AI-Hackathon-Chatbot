@@ -31,6 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let allSessions = {};
     let isProcessing = false;
 
+    const scrollBottomBtn = document.getElementById('scroll-bottom-btn');
+
     // --- Core Initialization ---
     initApp();
 
@@ -357,6 +359,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- Scroll Visibility Logic ---
+    chatBox.addEventListener('scroll', () => {
+        const scrollValue = chatBox.scrollHeight - chatBox.scrollTop - chatBox.clientHeight;
+        if (scrollValue > 300) {
+            scrollBottomBtn.classList.add('visible');
+        } else {
+            scrollBottomBtn.classList.remove('visible');
+        }
+    });
+
+    if (scrollBottomBtn) {
+        scrollBottomBtn.addEventListener('click', () => {
+            scrollToBottom();
+        });
+    }
+
     async function sendMessage() {
         const message = userInput.value.trim();
         if (!message || isProcessing) return;
@@ -546,4 +564,5 @@ window.addEventListener("load", () => {
     }, 3000); // 3 seconds
 
 });
+
 
