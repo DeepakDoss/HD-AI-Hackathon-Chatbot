@@ -325,7 +325,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="message-content">${formattedText}</div>
         `;
         chatBox.appendChild(msgDiv);
-        scrollToBottom();
+        scrollToBottom(sender === 'user');
     }
 
     function appendMessage(text, sender) {
@@ -352,11 +352,16 @@ document.addEventListener('DOMContentLoaded', () => {
         if (indicator) indicator.remove();
     }
 
-    function scrollToBottom() {
+    function scrollToBottom(force = false) {
+        const threshold = 100; // px from bottom to consider "at bottom"
+        const isNearBottom = chatBox.scrollHeight - chatBox.scrollTop - chatBox.clientHeight < threshold;
+
+        if (force || isNearBottom) {
         chatBox.scrollTo({
             top: chatBox.scrollHeight,
             behavior: 'smooth'
         });
+        }
     }
 
     // --- Scroll Visibility Logic ---
@@ -371,7 +376,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (scrollBottomBtn) {
         scrollBottomBtn.addEventListener('click', () => {
-            scrollToBottom();
+            scrollToBottom(true);
         });
     }
 
@@ -564,5 +569,6 @@ window.addEventListener("load", () => {
     }, 3000); // 3 seconds
 
 });
+
 
 
