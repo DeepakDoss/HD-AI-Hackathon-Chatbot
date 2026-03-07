@@ -19,6 +19,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnDeleteHistory = document.getElementById('settings-delete-history-btn');
     const btnDeleteAccount = document.getElementById('settings-delete-account-btn');
     const themeOptions = document.querySelectorAll('.theme-option');
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebar-overlay');
+    const sidebarCloseBtn = document.getElementById('sidebar-close-btn');
+    const headerSettingsBtn = document.getElementById('header-settings-btn');
 
     let currentUser = null;
     let currentSessionId = null;
@@ -178,6 +183,26 @@ document.addEventListener('DOMContentLoaded', () => {
             showWelcomeScreen();
         }
         renderHistorySidebar(); // Update active state
+        closeMobileMenu();
+    }
+
+    function toggleMobileMenu() {
+        if (sidebar) sidebar.classList.toggle('open');
+        if (sidebarOverlay) sidebarOverlay.classList.toggle('active');
+    }
+
+    function closeMobileMenu() {
+        if (sidebar) sidebar.classList.remove('open');
+        if (sidebarOverlay) sidebarOverlay.classList.remove('active');
+    }
+
+    if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+    if (sidebarOverlay) sidebarOverlay.addEventListener('click', closeMobileMenu);
+    if (sidebarCloseBtn) sidebarCloseBtn.addEventListener('click', closeMobileMenu);
+    if (headerSettingsBtn) {
+        headerSettingsBtn.addEventListener('click', () => {
+            if (settingsOverlay) settingsOverlay.style.display = 'flex';
+        });
     }
 
     function renderHistorySidebar() {
@@ -355,7 +380,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const typingId = showTypingIndicator();
 
         try {
-            const response = await fetch('https://hd-ai-hackathon-chatbot.onrender.com/api/chat', {
+            const response = await fetch('https://hd-ai-hackathon-chatbot.onrender.com', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -411,6 +436,7 @@ document.addEventListener('DOMContentLoaded', () => {
         newChatBtn.addEventListener('click', function () {
             setActiveMenu(this);
             startNewSession();
+            closeMobileMenu();
         });
     }
 
@@ -422,6 +448,7 @@ document.addEventListener('DOMContentLoaded', () => {
             userInput.value = "Give me 3 practical tips for winning a hackathon.";
             sendBtn.disabled = false;
             sendMessage();
+            closeMobileMenu();
         });
     }
 
@@ -430,6 +457,7 @@ document.addEventListener('DOMContentLoaded', () => {
         settingsBtn.addEventListener('click', function () {
             setActiveMenu(this);
             settingsOverlay.style.display = 'flex';
+            closeMobileMenu();
         });
     }
 
@@ -516,6 +544,5 @@ window.addEventListener("load", () => {
         }
 
     }, 3000); // 3 seconds
-
 
 });
