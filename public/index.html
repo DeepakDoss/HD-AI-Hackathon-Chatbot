@@ -77,9 +77,11 @@
 
     <div class="app-container">
         <!-- Sidebar -->
-        <aside class="sidebar">
+        <div class="sidebar-overlay" id="sidebar-overlay"></div>
+        <aside class="sidebar" id="sidebar">
             <div class="sidebar-header">
                 <h2><img src="logo1.png" style="width: 75px; height: 75px;">HD </h2>
+                <div class="mobile-only sidebar-close" id="sidebar-close-btn"><i class="fa-solid fa-xmark"></i></div>
             </div>
             <div class="sidebar-menu">
                 <button class="menu-item active" id="new-chat-btn"><i class="fa-solid fa-message"></i> New Chat</button>
@@ -100,12 +102,17 @@
         <!-- Main Chat Area -->
         <main class="chat-area">
             <header class="chat-header">
-                <div>
-                    <h1>HD Hackathon Assistant</h1>
-                    <p class="subtitle">Ask me anything about your hackathon project!</p>
+                <div class="header-left">
+                    <button id="mobile-menu-btn" class="mobile-only"><i class="fa-solid fa-bars"></i></button>
                 </div>
-                <div class="theme-toggle" id="theme-toggle">
-                    <i class="fa-solid fa-moon"></i>
+                <div class="header-center">
+                    <img src="logo1.png" class="header-logo"><span class="header-title">H D</span>
+                </div>
+                <div class="header-right">
+                    <button id="header-settings-btn"><i class="fa-solid fa-gear"></i></button>
+                    <div class="theme-toggle" id="theme-toggle" style="display: none;">
+                        <i class="fa-solid fa-moon"></i>
+                    </div>
                 </div>
             </header>
 
