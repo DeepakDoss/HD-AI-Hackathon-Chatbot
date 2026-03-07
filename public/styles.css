@@ -950,6 +950,15 @@ textarea::placeholder {
         padding: 4px 12px;
     }
 
+    .scroll-bottom-btn {
+        width: 44px;
+        height: 44px;
+        background-color: var(--accent);
+        color: white;
+        border: none;
+    }
+
+
     .message {
         max-width: 90%;
     }
@@ -1024,5 +1033,6 @@ textarea::placeholder {
         visibility:hidden;
     }
 }
+
 
 
