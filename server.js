@@ -57,7 +57,10 @@ app.post('/api/chat', async (req, res) => {
         });
     }
 });
-
+app.get('/sitemap.xml', (req, res) => {
+  res.setHeader('Content-Type', 'application/xml');
+  res.sendFile(path.join(__dirname, 'sitemap.xml'));
+});
 // Fallback to index.html for any other routes (SPA like behavior)
 app.use((req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
@@ -66,3 +69,4 @@ app.use((req, res) => {
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
+
