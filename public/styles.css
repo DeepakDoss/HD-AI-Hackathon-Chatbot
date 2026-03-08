@@ -442,12 +442,11 @@ textarea::placeholder {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100%;
+    min-height: 100%;
     width: 100%;
     text-align: center;
-    padding: 20px;
+    padding: 40px 20px;
 }
-
 .welcome-header {
     margin-bottom: 40px;
     animation: fadeIn 0.5s ease forwards;
@@ -990,6 +989,7 @@ textarea::placeholder {
 
     .welcome-screen {
         padding: 10px;
+        justify-content: flex-start;
     }
 }
 /* Splash Screen */
@@ -1049,6 +1049,7 @@ textarea::placeholder {
         visibility:hidden;
     }
 }
+
 
 
 
